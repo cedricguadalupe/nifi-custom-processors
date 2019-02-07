@@ -39,13 +39,13 @@
             </snapshots>
             <id>hortonworks-releases</id>
             <name>HDP Releases</name>
-            <url>http://maven2.rd.francetelecom.fr/proxy/content/repositories/hortonworks-releases</url>
+            <url>http://repo.hortonworks.com/content/repositories/releases</url>
             <layout>default</layout>
         </repository>
         <repository>
             <id>hortonworks-jetty-hadoop</id>
             <name>HDP jetty-hadoop</name>
-            <url>http://maven2.rd.francetelecom.fr/proxy/content/repositories/hortonworks-jetty-hadoop</url>
+            <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop</url>
             <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
@@ -56,42 +56,6 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
                 <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>orange-release</id>
-            <name>Release Repository of Orange</name>
-            <url>http://maven2.rd.francetelecom.fr/proxy/content/repositories/inhouse/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>orange-snapshot</id>
-            <name>Snapshot Repository of Orange</name>
-            <url>http://maven2.rd.francetelecom.fr/proxy/content/repositories/inhouse.snapshot/</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>orange-spring-io-plugins-releases</id>
-            <name>M2 Spring IO Repository Mirror</name>
-            <url>http://maven2.rd.francetelecom.fr/proxy/content/repositories/spring-io-plugins-releases</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
