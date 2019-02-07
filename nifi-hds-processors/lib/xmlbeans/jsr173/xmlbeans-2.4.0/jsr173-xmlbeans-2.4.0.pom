@@ -1,0 +1,6 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>xmlbeans</groupId>
+  <artifactId>jsr173</artifactId>
+  <version>xmlbeans-2.4.0</version>
+</project>

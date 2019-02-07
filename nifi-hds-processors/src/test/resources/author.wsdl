@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AuthorService" targetNamespace="http://services.bookservice.bdf.orange.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.bookservice.bdf.orange.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+        <xs:schema targetNamespace="http://services.bookservice.bdf.orange.com/" xmlns:tns="http://services.bookservice.bdf.orange.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="createAuthor" type="tns:createAuthor"/>
+            <xs:element name="createAuthorResponse" type="tns:createAuthorResponse"/>
+            <xs:element name="getAuthor" type="tns:getAuthor"/>
+            <xs:element name="getAuthorResponse" type="tns:getAuthorResponse"/>
+            <xs:element name="getAuthorsByName" type="tns:getAuthorsByName"/>
+            <xs:element name="getAuthorsByNameResponse" type="tns:getAuthorsByNameResponse"/>
+            <xs:element name="getBooksFromAuthor" type="tns:getBooksFromAuthor"/>
+            <xs:element name="getBooksFromAuthorResponse" type="tns:getBooksFromAuthorResponse"/>
+            <xs:complexType name="getBooksFromAuthor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="authorFirstName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="authorLastName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getBooksFromAuthorResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:book"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="book">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="authors" nillable="true" type="tns:author"/>
+                    <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    <xs:element minOccurs="0" name="title" type="xs:string"/>
+                    <xs:element minOccurs="0" name="type" type="tns:bookType"/>
+                    <xs:element name="year" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="author">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+                    <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="dateOfDeath" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" type="xs:long"/>
+                    <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nationality" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createAuthor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nationality" type="xs:string"/>
+                    <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="dateOfDeath" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createAuthorResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAuthor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="authorId" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAuthorResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:author"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAuthorsByName">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAuthorsByNameResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:author"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="bookType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="SCIENCE_FICTION"/>
+                    <xs:enumeration value="POLICIER"/>
+                    <xs:enumeration value="ROMAN_HISTORIQUE"/>
+                    <xs:enumeration value="HEROIC_FANTASY"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="AuthorNotFoundException" type="tns:AuthorNotFoundException"/>
+            <xs:complexType name="AuthorNotFoundException">
+                <xs:sequence>
+                    <xs:element name="id" nillable="true" type="xs:long"/>
+                    <xs:element name="author" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getAuthorsByNameResponse">
+        <wsdl:part element="tns:getAuthorsByNameResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="getBooksFromAuthorResponse">
+        <wsdl:part element="tns:getBooksFromAuthorResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="AuthorNotFoundException">
+        <wsdl:part element="tns:AuthorNotFoundException" name="AuthorNotFoundException"/>
+    </wsdl:message>
+    <wsdl:message name="createAuthor">
+        <wsdl:part element="tns:createAuthor" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="getAuthor">
+        <wsdl:part element="tns:getAuthor" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="getBooksFromAuthor">
+        <wsdl:part element="tns:getBooksFromAuthor" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="getAuthorResponse">
+        <wsdl:part element="tns:getAuthorResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="createAuthorResponse">
+        <wsdl:part element="tns:createAuthorResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="getAuthorsByName">
+        <wsdl:part element="tns:getAuthorsByName" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="Author">
+        <wsdl:operation name="getBooksFromAuthor">
+            <wsdl:input message="tns:getBooksFromAuthor" name="getBooksFromAuthor"/>
+            <wsdl:output message="tns:getBooksFromAuthorResponse" name="getBooksFromAuthorResponse"/>
+            <wsdl:fault message="tns:AuthorNotFoundException" name="AuthorNotFoundException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAuthor">
+            <wsdl:input message="tns:createAuthor" name="createAuthor"/>
+            <wsdl:output message="tns:createAuthorResponse" name="createAuthorResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAuthor">
+            <wsdl:input message="tns:getAuthor" name="getAuthor"/>
+            <wsdl:output message="tns:getAuthorResponse" name="getAuthorResponse"/>
+            <wsdl:fault message="tns:AuthorNotFoundException" name="AuthorNotFoundException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAuthorsByName">
+            <wsdl:input message="tns:getAuthorsByName" name="getAuthorsByName"/>
+            <wsdl:output message="tns:getAuthorsByNameResponse" name="getAuthorsByNameResponse"/>
+            <wsdl:fault message="tns:AuthorNotFoundException" name="AuthorNotFoundException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AuthorServiceSoapBinding" type="tns:Author">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getBooksFromAuthor">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getBooksFromAuthor">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getBooksFromAuthorResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AuthorNotFoundException">
+                <soap:fault name="AuthorNotFoundException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAuthor">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="createAuthor">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="createAuthorResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAuthor">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getAuthor">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAuthorResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AuthorNotFoundException">
+                <soap:fault name="AuthorNotFoundException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAuthorsByName">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getAuthorsByName">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAuthorsByNameResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="AuthorNotFoundException">
+                <soap:fault name="AuthorNotFoundException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AuthorService">
+        <wsdl:port binding="tns:AuthorServiceSoapBinding" name="AuthorPort">
+            <soap:address location="http://127.0.0.1:8080/Test-Soap-Cedric/services/author"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

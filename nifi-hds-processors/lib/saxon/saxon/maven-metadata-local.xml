@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>saxon</groupId>
+  <artifactId>saxon</artifactId>
+  <versioning>
+    <release>9.1.0.8j</release>
+    <versions>
+      <version>9.1.0.8j</version>
+    </versions>
+    <lastUpdated>20170530125603</lastUpdated>
+  </versioning>
+</metadata>

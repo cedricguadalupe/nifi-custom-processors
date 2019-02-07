@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.bookservice.bdf.orange.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <ser:createAuthor>
+            <!--Optional:-->
+            <firstName>?</firstName>
+            <!--Optional:-->
+            <lastName>?</lastName>
+            <!--Optional:-->
+            <nationality>?</nationality>
+            <!--Optional:-->
+            <dateOfBirth>?</dateOfBirth>
+            <!--Optional:-->
+            <dateOfDeath>?</dateOfDeath>
+        </ser:createAuthor>
+    </soapenv:Body>
+</soapenv:Envelope>

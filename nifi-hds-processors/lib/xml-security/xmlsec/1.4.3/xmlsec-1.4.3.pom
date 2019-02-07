@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>xml-security</groupId>
+    <artifactId>xmlsec</artifactId>
+    <version>1.4.3</version>
+    <packaging>jar</packaging>
+</project>
